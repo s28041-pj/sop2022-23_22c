@@ -1,0 +1,4 @@
+Drugi Semestr
+Zjazd 1
+
+- Nauczyłem się instalcji Debiana jak i konfiguracji Virtual Boxa
