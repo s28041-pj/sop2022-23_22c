@@ -1,0 +1,47 @@
+//Virutal Box
+1. Kliknij nowa
+2. Wpisz nazwę debian i upewnij się że Typ = Linux, Wersja = Debian(64-bit)
+3. Kliknij dalej, następnie wybierz optymalną ilość ramu. U mnie to 2048. Wybierz parzystą liczbę.
+4. Kliknij dalej, wybierz "Stwórz wirtualny dysk twardy", i kliknij "Utwórz"
+5. Teraz wybieramy typ pliku z wirualnym dyskiem, 
+	VDI - format przeznaczony na VB, pozostałe VHD - przeznaczony jest dla Hyper-V, a VMDK dla VMWare.
+	My wybieramy VDI
+
+6. Dysk "przedzialany dynamicznie" - Dysk dynamiczny zwiększa na bieżąco rozmiar,
+	gdy na naszej maszynie przybywa danych, a nie z góry zajmuje określony rozmiar.
+	"Stały rozmiar" - lepsza wydajność i szybkość od przydzielanego dynamicznie, ale musimy
+	z góry ustawić rozmiar.
+7. Rozmiar dysku ustawiam 8Gb aby mieć zapas do polecanych 2Gb. Na dysku nie będę potrzebował 
+	dużej przestrzeni gdyż będzie on używany tylko do celów edukacyjnych.
+8. Po utworzeniu wybieramy naszą maszynę, dajemy Settings->Storage->Płyta z plusem->Add->Wybieramy 
+	obraz który pobraliśmy
+9. Włączamy naszą maszynę
+
+//Instalacja
+1. Wybieramy tekstowy tryb instalacji(samo Install zamiast Graphical)
+2. Język - angielski(wybranie polskiego może powodować problemy)
+3. Kraj - Other->Europe->Poland
+4. Układ klawiatury wybieram en_US.UTF-8, czyli Amerykański gdyż z takiej korzystam jak zapewne każdy.
+5. Zestaw znaków ustawiam na American English
+6. Hostname - Nazwa komputera w sieci
+7. Domain name - nazwa domeny(jeśli korzystamy z domen w sieci to ustawić, jeśli nie to zostawić puste)
+8. Hasło użytkownika Root - ustawić takie aby zapamiętać, ale żeby było trudne(na cele ćwiczeń ustawić proste, w 
+końcu tylko my będziemy korzystać z tej maszyny)
+9. Ponowić hasło Root'a
+10. Wybieramy sposób partycjonowania dysku - Guided jeśli nie mamy specjalnych wymagań -> Use entire disk; manual 
+	jeśli potrzebujemy wybrać więcej opcji; Dla serwerów polecam dać opcję encrypted LVM, pozwala na dodawanie 
+	dysków bez restartu maszyny
+11. W naszym przypadku wybieramy Manual
+12. Wybieramy nasz dysk->Enter->Yes
+13. Free Space -> Create a new partition->Rozmiar partycji(wybierzmy ok. 4,5GB na SWAP) ->Logical-> Use as: SWAP->Done
+14. Free Soace -> Create a bew partition->Pozostałe miejsce->Primary->Use as: EXT4->Done
+15. Włączam Bootable flag na 'on', ponieważ musi być jakaś partycja bootująca, bo inaczej system nie wystartuje.
+16. Wybieram opcję 'Done setting up partition'. Następnie 'Finish partitioning and write changes to disk'. 
+17. W oknie configure package manager, wybieram 'No', ponieważ nie mam innej płyty z dodatkowymi pakietami.
+18. Jako region wybieramy Poland->ftp.task.gda.pl(serwer z Gdańska)
+19. Pomijam opcję dodania proxy, gdyż nie muszę żadnego ustawiać, by mieć wyjście na świat.
+20. W oknie gdzie jest napisane 'Participate in the package usage survey?' wybieram opcję 'No' bo także instaluję 
+	ten system do celów demonstracyjnych i nie ma co przesyłać nieprawdziwych danych. 
+	W software selection zaznaczam tylko opcję standard system utilities.
+21. W oknie Installation complete naciskam continue, maszyna się restartuje, wybieram Debian/GNU Linux. Loguję 
+	się na konto roota. Debian jest już zainstalowany.
