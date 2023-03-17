@@ -1,4 +1,7 @@
 2023-03-04
 Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
-- ...
+- Instalacji dabiana
+	Do tej pory nie korzystałem z linuxa poza zajęciami UKOS i jest to dla mnie nowe doświadczenie.
+- Zrozumiałem każdą funkcję przez co świadomie instaluje system i zaznaczam opcje które są mi napewno potrzebne
+- Podobają mi się te zajęcia oraz sposób ich prowadzenia.
 
