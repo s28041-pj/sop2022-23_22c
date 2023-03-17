@@ -1,0 +1,67 @@
+Instalacja Debiana
+
+Potrzebne:
+- Obraz systemu Debian, możemy pobrać wchodząc na stornę https://www.debian.org/distrib/ następnie 
+wybieramy wersję naszego pliku w moim jest to “ISO netinst dla 64-bitowego PC”
+
+- maszyny wirtualnej(np. Oracle VirtualBox)
+
+VirtualBox:
+1. Naciskamy New
+2. W polu Name wpisujemy nazwę maszyny
+3. Jeśli w punkcie 2 wpisaliśmy Debian, w polach Type oraz Version powinno automatycznie ustawić się wersja OS i typ. Jeśli nie to:
+4.1. W polu type wybrać Linux
+5.2. W polu Version wybrać Debian 32-bit dla komputerów 32bit, 64-bit dla 64bitowych
+6. Naciskamy Next
+7. Wybieramy pamięci ram stosując zalecane ustawienia systemowe.
+Strona z wymaganiami systemu operacyjnego Debian: https://www.debian.org/releases/jessie/mips/ch03s04.html.en
+8. Wybieramy "Create a virtual hard disk now". Wybieram z 3 rodzajów dysków:
+VMDK - Natywny format dysku dla narzędzi firmy VMware analogiczne zastosowanie jak dla VirtualBox i HyperV.
+VHD - Plik w formacie dysku fizycznego używany głównie w HyperV.
+VDI - Pliki dysku VirtualBoxa
+9. VDI->Next->Dynamically allocated(aby plik nie zajmował od razu całej wybranej przez nas pojemności. Stały rozmiar jest bardziej wydajny, bo nie musi ciągle alokować miejsca)
+10. Wybieramy miejsce gdzie zapisze się nasz wirtualny dysk oraz jego maksymalna pojemność -> Create
+11. Po utworzeniu wybieramy naszą maszynę, Wchodzimy Settings->Storage->Płyta z plusem->Add->Wybieramy obraz
+12. Włączamy naszą maszynę:
+Zwykły start nie ma opcji odłączenia interfejsu graficznego.
+Bezgłowy start maszyna po uruchomieniu działa z funkcją odłączenego interfejsu graficznego (maszyna będzie działać w tle).
+Oddzielny start możemy wybrać opcje odłączenia od interfejsu graficznego.
+
+Instalacja Debiana:
+1.Wybieramy tryb instalacji systemu, ja wybieram tryb tekstowy, posiada te same opcje co tryb graficzny.
+2.Następnie wybieramy język systemu zalecanym jest, aby był to język angielski tak samo ustawiamy dla naszej klawiatury
+3.W hostname ustalmy jak ma się wyświetlać maszyna w naszej sieci, sugerowana nazwa jest “debian” i taką zostawię
+4.Nie dodaje maszyny do domeny, ponieważ używam sieci domowej, zalecane jest to w przypadku firm. Dołączanie komputera do domeny jest jednym ze sposobów na zarządzanie komputerami w firmie lub organizacji. Poprzez dołączenie maszyny do domeny, administrator może kontrolować, jakie zasoby są dostępne dla użytkowników, jakie aplikacje są zainstalowane na komputerze, a także jakie ustawienia mają zastosowanie dla poszczególnych użytkowników.
+5.Haslo dla root (konta administratora ) tak jak każde hasło powinno zawierać odpowiednie parametry, aby spełniać standardy bezpieczeństwa.
+6.Podajemy pełną nazwę konta użytkownika( konto nie jest  związane z zarządzaniem systemem) system podpowiada aby to było nasze prawdziwe imię.
+7.Wpisujemy “username” nazwa powinna zaczynać się z małej litery
+8.Nadajmy hasło dla konta użytkownika
+9.Kofiguracja zegara systemowego jest oparta na wcześniejszym wyborzę język, więc jeżeli zależy nam, aby była wyświetlana godzina naszej lokalizacji powinniśmy wybrać język jej odpowiadający.
+10. Konfiguracja partycji dyskowych:
+11.1.Guided - use entire disk. Konfigurator przygotuje mapowanie wybranego dysku, konfigurator daje nam możliwość użycia wszystkiego na jednej partycji(najszybsza opcja )i, albo na wydzielone katalog /home( konta użytkowników w przypadku formatowania systemu zostaną nie naruszone )  i jest jeszcze opcja z podziałem na /home, /var, /tmp.
+12.2.Guided - use entire disk and set up LVM. LVM oznacza Logical Volume Manager umożliwia nam utworzenie z wielu różnych dysków jednego. Można dynamicznie rozszerzać rozmiar dysku w trakcie działania maszyny, bardzo przydatne.
+13.3.Guided - use entire disk and set up encrypted LVM. To samo tylko z dodatkowa enkrypcją
+14.4. Manual. Ostatnia opcja pozwala nam na ręczne ustawienie partycji systemu, opcję tę wybieram.
+15.1.Guided partitioning. Cofa nas do początku konfiguratora dysków.
+16.2.Configure iscsi volumes. iSCSI (Internet Small Computer System Interface) to protokół służący do przesyłania blokowych danych z jednego urządzenia do drugiego w sieci. iSCSI Volumes to wirtualne dyski, które są dostarczane do systemu operacyjnego przez protokół iSCSI. iSCSI Volumes są tworzone na urządzeniach serwerowych i są udostępniane jako zasoby sieciowe dla klientów. W ten sposób, klient może połączyć się z iSCSI Volumes i używać ich jakby były one lokalnymi dyskami twardymi. Korzystanie z iSCSI Volumes może przynieść wiele korzyści. Po pierwsze, umożliwia to centralne zarządzanie i wirtualizację dysków twardych w sieci, co ułatwia zarządzanie i skalowanie infrastruktury. Po drugie, iSCSI Volumes mogą być używane jako dyski dla wielu systemów operacyjnych, bez potrzeby fizycznego podłączania dysku do każdego z nich.
+17.3.Nasz dysk wirtualny, wybieram tę opcję.
+18.Pyta się nas czy chcemy stworzyć nową tablice partycji są dwa typy partycji MBR I GPT - maszyna jest uruchominoa z włączonym UEFI jeśli jest wyłączone to musi zostać włączone MBR. MBR jest starszym type, zalecane jest dla nowszych systemów GPT.
+19.Wybieramy “FREE SPACE” -> Create a new partition -> Wielkość partycji -> Typ Primary/Logical partycje pierwotne są podstawowymi partycjami na dysku twardym (max 4 ), podczas gdy partycje logiczne są tworzone w obrębie partycji rozszerzonej i pozwalają na tworzenie dodatkowych partycji na dysku twardym, gdy liczba partycji pierwotnych jest już maksymalna. -> Wybieramy czy nowa partycja ma znajdować się na początku czy na końcu dostępnej przestrzeni. 
+20.W dalszej części konfigurator pozwala nam zmienić:
+21.1. Format systemu plików
+22.2.Punkt montowania partycji
+23.3.Opcje montowania (Wyświetli nam listę opcji )
+24.4.Nazwa
+25.5.Reserved blocks. Zazwyczaj około 5% całkowitej przestrzeni dyskowej jest zarezerwowane na zarezerwowane bloki. Te bloki są zarezerwowane na potrzeby administratora systemu lub roota i są używane w sytuacjach, gdy system plików jest w stanie krytycznym i wymaga naprawy, lub gdy partycja jest pełna, a użytkownik nie ma dostępu do systemu.
+26.6.Typical usage. Możemy konfigurować inode szczególnie ważne, kiedy posiadamy duży dysk. 
+27.7. Bootable flag. Flaga bootowania może być tylko jedna na partycji podstawowej w celu określenia z jakiej partycji BIOS ma uruchamiać system
+28.Zatwierdzamy zmiany i przechodzimy do następnego etapu
+29.Wybieramy z mirror najbliższy naszej lokalizacji i dalej
+30.System będzie chciał skanować i wysyłać dane apropo najczęściej używanych pakietów 
+31.Dobór softwaru:
+32.1.GNOME oferuje intuicyjny interfejs użytkownika, wiele funkcji i narzędzi oraz przyjazną dla użytkownika obsługę, stabilne środowisko graficzne
+33.2. KDE oferuje bardziej konfigurowalny i dostosowywalny interfejs użytkownika niż GNOME. Posiada także wiele narzędzi, w tym narzędzia do zarządzania plikami i oknami
+34.3.Xfce to środowisko graficzne dla użytkowników, którzy preferują lekkie i szybkie środowiska. Xfce jest znacznie mniej zasobożerne niż GNOME i KDE, ale oferuje wiele przydatnych funkcji i narzędzi
+35.4.LXDE to bardzo lekkie środowisko graficzne dla użytkowników, którzy mają starsze lub słabsze komputery. LXDE jest bardzo prosty w obsłudze i nie wymaga dużo zasobów systemowych, ale oferuje podstawowe funkcje i narzędzia.
+36.5. Cinnamon zapewnia łatwy i przyjazny interfejs dla użytkownika.Cinnamon jest bardziej zasobożerne niż niektóre inne środowiska graficzne, takie jak Xfce czy LXDE, ale oferuje również bardziej rozbudowane funkcje i wizualne efekty
+37.Plasma duża możliwość kastomizacji wyglądu interfejsu użytkownika, mniej wydajny niż inne podane tutaj środowska, ale również spełnia spełnia swoje zadanie i może ładnie wyglądać
