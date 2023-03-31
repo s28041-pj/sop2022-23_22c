@@ -1,7 +1,7 @@
 Instalacje debiana zaczynamy od wejscia na strone debian.org i pobranie iso debiana. Do podstawowego uzytku wystarczy pobranie malego obrazu.
 
 
-Przechodzimy do VirtualBoxa i wykonamy pare korkow na start:
+Przechodzimy do VirtualBoxa i wykonamy pare krokow na start:
 
 1. Klikamy Nowa
 2. Wprowadzamy nazwe, np. Deb, od razu VB wybierze wersje Linux'a Debian
