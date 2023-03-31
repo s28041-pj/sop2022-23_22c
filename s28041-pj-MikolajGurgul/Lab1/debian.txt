@@ -1,0 +1,45 @@
+Instalacje debiana zaczynamy od wejscia na strone debian.org i pobranie iso debiana. Do podstawowego uzytku wystarczy pobranie malego obrazu.
+
+
+Przechodzimy do VirtualBoxa i wykonamy pare korkow na start:
+
+1. Klikamy Nowa
+2. Wprowadzamy nazwe, np. Deb, od razu VB wybierze wersje Linux'a Debian
+3. Wybieramy optymalna ilosc RAM'u, to jest 512 MB, dla instalacji mozna dac wiecej, np 2048
+4. Typ dysku VDI, zalecany przez VB
+5. Wybieramy staly rozmiar dysku twardego, zablokujemy od razu miejsce dla maszyny
+6. Ustawiamy wielkosc dysku, rekomendowane 2 GB, chyba ze potrzebujemy wiecej dla wykonywanych operacji i dla danych
+7. Uruchamiamy
+
+Po uruchomieniu maszyny wirtualnej:
+
+1. Wybieramy instalacje tekstowa
+2. Jezyk angielski
+3. Przechodzimy do other, wybieramy europe i wybieramy polske
+4. Lokalne ustawienia, wybieramy United States, aby ograniczyc polskie znaki
+5. Angielskie klawisze
+6. Wpisujemy Hostname, np. debian
+7. Nazwa domeny, o ile posiadamy, jezeli nie, to pomijamy
+8. Podajemy haslo roota, odpowiednio silne
+9. Ponawiamy podane haslo
+10. Wpisujemy nazwe uzytkownika
+11. Wpisujemy login uzytkownika
+12. Wpisujemy haslo uzytkownika
+13. Ponawiamy wpisane haslo
+14. Wybieramy jedna z opcji, pierwsza Guided to zaproponowane mapowanie dysku przez instalator, wszystko na jednej partycji
+druga to Guided z LVM, mozliwosc uzycia wielu dyskow o roznych rozmiarach, do stworzenia wielu dyskow logicznych
+trzecia to Guided z encrypted LVM, to samo co wyzej z enkrypcja
+czwarta to manualne, ustawienia takie jakie potrzebujemy
+15. Po wybraniu manualnej, tworzymy nowa partycje na dysku, klikamy na wolne miejsce i przydzielamy miejsce dla partycji, domyslnie utworzy sie
+jako Ext4, mozna to zmienic. Mozna utworzyc standardowo cztery podstawowe partycje na dysku. Zazwyczaj jedna partycja podstawowa, bootojaca.
+Miejsce na partycji pomniejszamy o ilosc przydzielonego RAM'u razy 1,5.
+16. Potwierdzamy utworzenie partycji i przechodzimy dalej
+17. Nie skanujemy dodatkowych mediow
+18. Mirror, Polska
+19. ftp.task.gda.pl, jest najblizej, szybko bedzie sie pobierac/mozna wybrac inny, ktory jest blizej nas, w zaleznosci od miejsca
+20. Jezeli posiadamy proxy to wpisujemy, inaczej pomijamy
+21. Nie wybieramy srodowiska graficznego, zaznaczamy standardowe utils systemowe
+22. Instalacja zakonczona, po instalacji usuwamy dysk z wirtualnego napedu i wlaczamy ponownie system
+23. Wlaczamy zainstalowanego debiana
+24. Logujemy sie na konto i mozna korzystac z systemu
+25. Wpisujemy tasksel i mozemy ponownie wybrac srodowisko graficzne
