@@ -1,45 +1,171 @@
 Instalacje debiana zaczynamy od wejscia na strone debian.org i pobranie iso debiana. Do podstawowego uzytku wystarczy pobranie malego obrazu.
-
+Jezeli nie posiadamy maszyny wirtualnej, to mozemy pobrac np. VirtualBoxa ze strony virtualbox.org. 
+Pobieramy odpowiednia dla naszego systemu wersje i nastepnie instalujemy maszyne.
 
 Przechodzimy do VirtualBoxa i wykonamy pare krokow na start:
 
+Przed wykonaniem krokow mozemy zmienic miejsce zapisywania sie maszyn na naszym komputerze, jezeli chcemy, aby maszyny zapisywaly sie
+ w innym miejscu niz defaultowo.
+W tym celu klikamy w plik -> globalne ustawienia -> ogolne. Tutaj wybieramy folder, w ktorym maszyny maja sie zapisywac.
 1. Klikamy Nowa
-2. Wprowadzamy nazwe, np. Deb, od razu VB wybierze wersje Linux'a Debian
-3. Wybieramy optymalna ilosc RAM'u, to jest 512 MB, dla instalacji mozna dac wiecej, np 2048
-4. Typ dysku VDI, zalecany przez VB
-5. Wybieramy staly rozmiar dysku twardego, zablokujemy od razu miejsce dla maszyny
-6. Ustawiamy wielkosc dysku, rekomendowane 2 GB, chyba ze potrzebujemy wiecej dla wykonywanych operacji i dla danych
-7. Uruchamiamy
+Dzieki tej opcji bedziemy mogli dodac nowa maszyne wirtualna na naszym komputerze
+2. Wprowadzamy nazwe maszyny wirtualnej, np. Deb, na tej podstawie VB bedzie dopasowywac system. Oczywiscie mozemy sami zmienic 
+typ oraz wersje systemu niezalezna od nazwy maszyny.
+3. Wybieramy optymalna ilosc RAM'u. W celu zapoznania sie z tym, wchodzimy w google i szukamy jakie sa wymagania dla systemu, ktory instalujemy. 
+Dla Debiana bez desktopu minimalna ilosc to 128 MB, rekomendowane to 512 MB. Z dekstopem minimum to 256 MB, a rekomendowane to 1 GB. 
+Natomiast dla szybszej instalacji mozemy dac wieksza ilosc RAM'u, np. 4096. 
+Po zainstalowaniu systemu powinnismy zmniejszyc ilosc RAM'u, tak aby nie zabierac niepotrzebnie za duzo pamieci komputera.
+4. Mozemy wybrac z posrod trzech typow wirtualnych dyskow:
+VDI -> domyslny format dyskow wirtualnych dla VirtualBox. Jest formatem zoptymalizowanym pod katem VB i ofertuje najlepsza wydajnosc. 
+Obsluguje takie funkcje jak dynamiczna zmiana rozmiaru dysku, szyfrowanie i kompresje.
+VHD -> format stworzony przez Microsoft. Jest uniwersalny, ktory moze byc uzywany z wieloma wirtualnymi platformami, w tym z Hyper-V i VirtualBox. 
+Obsluguje dynamiczna zmiane rozmiaru dysku, szyfrowanie i kompresje. Z dysku VHD da sie uruchomic komputer, ten dysk wyswietla sie
+w zbiorze dyskow na naszym komputerze i mozna z niego korzystac.
+VMDK -> format stworzony przez VMware, zoptymalizowany pod katem platformy VMware, ale moze byc uzywany rowniez z VB.
+Obsluguje dynamiczna zmiane rozmiaru dysku, szyfrowanie i kompresje.
+Wybierzemy VDI, jest najoptymalniejszy z VB i oferuje najlepsza wydajnosc.
+5. Mozemy wybrac dynamiczny przydzial badz staly rozmiar. Dzieki stalemu rozmiarowi dysku, od razu zabookujemy miejsce dla naszej wirtualnej maszyny,
+przez co nie zdziwimy sie, ze nagle znika nam ilosc dostepnej przestrzeni na dysku. Wybierajac dynamiczny przydzial, rozmiar naszej maszyny bedzie rosl,
+w miare zapotrzebowania na miejsce, oczywiscie nie przekroczy ona ilosci, ktora na starcie przydzielimy wirtualnej maszynie, rowniez jest to wolniejsze,
+poniewaz z kazda operacja systemu szuka miejsca, w ktorym moze zwiekszac uzywanie przestrzeni.
+Wybierzemy staly rozmiar.
+6. Ustawiamy wielkosc dysku, rekomendowane 2 GB bez desktopu, z desktopem jest to 10 GB, chyba ze potrzebujemy wiecej dla wykonywanych operacji i dla danych np. 
+na serwerze 2 GB bedzie zdecydowanie za malo, sa tam przetwarzane ogromne ilosci danych, ktore potrzebuja wielkich przestrzeni na dyskach.
+7. Nastepnie mozemy wejsc w ustawienia naszej maszyny, w celu zmian jakichs interesujacych nas ustawien.
+Ogolne -> schowek, pozwalajacy przeklejac tekst, potrzeba zainstalowac dodatkowe pakiety. przeciaganie i upuszczanie, pozwala przenosic pliki pomiedzy oknami.
+Szyfrowanie, w firmie musielibysmy wlaczyc i wybrac odpowiednie szyfrowanie. Jest to dodatkowa operacja dla maszyny.
+System -> Ustawienie ilosci RAM'u, po zainstalowaniu systemu zmniejszamy tutaj ilosc pamieci wykorzystywanej przez maszyne wirtualna.
+Wylaczamy niepotrzebne bootowania, miedzy innymi dyskietke oraz naped optyczny.
+Dla bezpieczenstwa wylaczamy EFI, jednak mozemy zostawic, wtedy potrzebna bedzie dodatkowa partycja w trakcie instalacji.
+Procesor, jednostki wykonawcze, mozemy zwiekszyc badz zmniejszyc ilosc, w zaleznosci ile bedziemy potrzebowac.
+Ekran -> Pamiec wideo, w zaleznosci ile srodowisko graficzne bedzie potrzebowac, to powinnismy zwiekszyc.
+Akceleracja, jezeli bedziemy chcieli grac w gry, to wlaczamy, wtedy rowniez zwiekszamy pamiec wideo.
+Pamiec -> kontroler: IDE plyta, wybieramy miejsce naszego pobranego ISO
+kontroler: SATA dysk, ktory mamy pod nasz zainstalowany system
+Dzwiek -> Wylaczamy, nie bedzie nam potrzebny
+Siec -> Domyslnie jedna karta sieciowa.
+NAT, maszyna wirtualna bedzie sama sobie dzialac, ale bedzie miala dostep do internetu. Komputer bedzie robic za router i bedzie podmieniac adresy.
+Mostkowana (bridget), maszyna dostanie podobny adres co nasz komputer, bedzie w sieci rownoprawnym komputerem wzgledem naszego komputera hosta.
+Siec wewnetrzna, kilka maszyn wirtualnych i chcemy ze soba je polaczyc, beda tylko ze soba mialy lacznosc.
+Siec izolowane, host tylko z maszyna wirtualna ma polaczenie.
+Dobor typu kart, jezeli potrzebna jest wyzsza wydajnosc, to mozemy wybrac karte serwerowa.
+Adres MAC: generowany automatycznie przez VB, po zainstalowaniu nie zmieniamy, chyba ze jest taka potrzeba.
+Przekierowanie portow -> Jezeli chcemy zeby na maszynie wirtualnej chodzil serwer SSH, to mozemy przekierowac port SSH do naszego hosta,
+na jakis konkretny port, na komputerze bedziemy laczyc sie na localhost wskazany przez nas.
+Porty szeregowe -> mozna wlaczyc, raczej sie z tego nie korzysta. Chyba, ze chcemy polaczyc sie z urzadzeniami sieciowymi, konkretnymi kablami.
+USB -> Musimy miec wlaczona, aby chociaz korzystac myszki, czy klawiatury USB, mozemy ustawic domyslnie wlaczone urzadzenia.
+Udostepniane folery -> Jezeli chcemy korzystac z plikow przesylanych przez komputer, to mozemy skorzystac z tej opcji.
+Interfejs uzytkownika -> Jest to samego VB, raczej zostawiamy domyslnie.
+8. Mamy trzy opcje uruchomienia maszyny wirtualnej
+Zwykly start -> Brak mozliwosci odlaczenia interfejsu graficznego
+Bezglowy start -> W zakladce maszyna mamy opcje odlaczenia interfejsu graficznego, maszyna dalej chodzi, ale nie mamy okienka.
+Mozemy w ten sposob stworzyc serwery wirtualizacyjne.
+Oddzielny start -> Okienko graficzne od razu sie pojawilo i posiada te same opcje co w bezglowym starcie.
+Zalecane uruchamianie maszyny poprzez oddzielny start, tak abysmy mieli w razie czego opcje odlaczenia interfejsu graficznego.
 
 Po uruchomieniu maszyny wirtualnej:
 
-1. Wybieramy instalacje tekstowa
-2. Jezyk angielski
-3. Przechodzimy do other, wybieramy europe i wybieramy polske
-4. Lokalne ustawienia, wybieramy United States, aby ograniczyc polskie znaki
-5. Angielskie klawisze
+1. Instalacja graficzna badz zwykla. Wybieramy w zaleznosci, czy chcemy korzystac z myszki, czy z samej klawiatury.
+Instalacja tekstowa jest szybsza i zazwyczaj administratorzy korzystaja wlasnie z niej. Instalacja graficzna potrzebuje myszki,
+oraz korzysta z wiekszej ilosci zasobow.
+Uruchamiamy instalacje tekstowa
+2. Wybieramy jezyk systemu. Z racji, ze informatyka jest po angielsku, to domyslnie wybieramy jezyk angielski.
+Wszystkie bledy, logi beda pojawiac sie w jezyku angielskim, rozwiazania na bledy, rowniez beda pojawiac sie w jezyku angielskim.
+3. Wybieramy lokalizacje, domyslnie pojawiaja sie panstwa anglojezyczne, zatem musimy wybrac Other ->  Europe i wybrac Polske
+4. Lokalne ustawienia, wybieramy United States, aby ograniczyc polskie znaki. Jezeli bedziemy mieli problem z dyskiem.
+Wieksze szanse na odzyskanie plikow bedzie w momencie, w ktorym sa znaki angielskie, poniewaz w innych jezykach tych plikow nie odzyskamy,
+beda same kwadraciki, z ktorych nic juz nie odczytamy.
+5. Mapowanie klawiszy angielskie, powiazane z poprzednim krokiem.
 6. Wpisujemy Hostname, np. debian
 7. Nazwa domeny, o ile posiadamy, jezeli nie, to pomijamy
-8. Podajemy haslo roota, odpowiednio silne
+8. Podajemy haslo roota, odpowiednio silne, tym bardziej jezeli bedzie to serwer z dostepem do internetu
 9. Ponawiamy podane haslo
 10. Wpisujemy nazwe uzytkownika
 11. Wpisujemy login uzytkownika
+Nie mozemy przejsc bez tworzenia i podawania nazwy uzytkownika
 12. Wpisujemy haslo uzytkownika
 13. Ponawiamy wpisane haslo
-14. Wybieramy jedna z opcji, pierwsza Guided to zaproponowane mapowanie dysku przez instalator, wszystko na jednej partycji
-druga to Guided z LVM, mozliwosc uzycia wielu dyskow o roznych rozmiarach, do stworzenia wielu dyskow logicznych
-trzecia to Guided z encrypted LVM, to samo co wyzej z enkrypcja
-czwarta to manualne, ustawienia takie jakie potrzebujemy
-15. Po wybraniu manualnej, tworzymy nowa partycje na dysku, klikamy na wolne miejsce i przydzielamy miejsce dla partycji, domyslnie utworzy sie
-jako Ext4, mozna to zmienic. Mozna utworzyc standardowo cztery podstawowe partycje na dysku. Zazwyczaj jedna partycja podstawowa, bootojaca.
-Miejsce na partycji pomniejszamy o ilosc przydzielonego RAM'u razy 1,5.
+14. Wybieramy jedna z opcji:
+Guided to zaproponowane mapowanie dysku przez instalator, wszystko na jednej partycji/wydzielona partycja na katalog i profil uzytkownikow
+Dla szybkiej instalacji.
+Guided z LVM, mozliwosc uzycia wielu dyskow o roznych rozmiarach, do stworzenia wielu dyskow logicznych, ulatwia zarzadzanie
+przestrzenia dyskowa. Dysk, ktory jest np. na talerzu, dysku USB, etc. Mozliwe do zrobienia w trakcie dzialania systemu.
+Dynamiczne rozszerzanie systemu bez potrzebny ponownego wlaczania systemu.
+Guided z encrypted LVM, to samo co wyzej z enkrypcja, co daje dodatkowe zabezpieczenie
+Manualne, pozwala na reczne stworzenie partycji.
+Wybieramy manualnie.
+15. Guided partitioning, to samo co bylo wczesniej w opcjach, ktore byly wczesniej, propozycja instalatora.
+Configure iSCSI volumes, mechanizm podlaczania urzadzen blokowych poprzez siec. Wskazuje sie adres sieciowy dysku.
+Dysk wirtualny -> sa dwa typy partycji. MBR oraz GPT. GPT uzywane w momencie, w ktorym maszyna jest startowana z EFI, jezeli
+jest wylaczone to MBR.
+Klikamy na wolne miejsce i wybieramy wielkosc partycji oraz ustawiamy, czy partycja ma byc na poczatku, czy na koncu.
+Domyslnie mozna stworzyc cztery domyslne partycje na dysku. Czwarta partycja jest partycja logiczna. Pierwsza to partycja bootojaca,
+pozwalajaca na uruchomienie systemu.
+Przydzielajac wielkosc partycji musimy odjac 1,5 razy przydzielonego wczesniej RAM'u. Np. przydzielilismy 16GB (na windowsie GiB)
+przestrzeni, oraz 4GB RAM'u, to mnozymy RAM razy 1,5 i od 16GB odejmujemy 6GB. Wobec tego przydzielamy 10GB przestrzeni dla partycji.
+Oraz 6GB jako mapowanie pamieci (partycje wymiany).
+Po wybraniu 10GB dla partycji ukazuja sie nam dostepne systemy plikow:
+Ext2 -> Podstawowy, stary system plikow na linuxie
+Ext3 -> To samo co ext2, tylko ze z journaling i jest nowszy
+journaling - log zapisywany wraz z danymi, zeby zapisyc co sie bedzie dzialo, zapisac co sie stalo i zapisac, ze sie wykonalo,
+dzieki temu nic nie zniknie.
+Ext4 -> Przepisany system Ext od podstaw, jest najnowszy
+btrfs -> Wprowadza kopiowanie na zapis, zgodnosc z RAID, mechanizm snapshotow.
+JFS -> Zaprojektowany z mysla o wydajnosci i skalowalnosci, obsluguje dziennikowanie i wiele innych zaawansowanych opcji
+XFS -> Tak samo jak JFS z mysla o wydajnosci i skalowalnosci. Obsluguje bardzo duze partycje i pliki, dzieki dziennikowaniu
+i innym zaawansowanym mechanizmom gwarantuje duza stabilnosc.
+FAT16 oraz FAT32 -> chodzi o dlugosc tablicy danych w systemach FAT, wykorzystywanych w systemach DOS'owych.
+swap area -> partycja na swapa
+Reversed BIOS boot area -> wlaczone EFI, specjalna partycja, ktora jest potrzebna
+physical volume for RAID -> wiele dyskow, ale maja okreslony rozmiar, pozwala na polaczenie dyskow
+Standardowo Ext4.
+Typical usage -> inode (desktyptory plikow), w momencie, w ktorym mamy miejsce na dysku, ale nie mozemy nic zapisac, oznacza to,
+ze nie ma miejsca dla stworzenia nowego inode'a.
+Bootable flag, dla partycji bootojacych flaga musi byc wlaczona.
+Dla pozostalej pamieci, ktora zostala odejmowana, tworzymy partycje jako swap area.
+Tutaj flaga bootojaca jest wylaczona.
+Potrzebna jest rowniez partycja EFI, chyba, ze w ustawieniach w VB wylaczymy dla tej maszyby,
+bez niej w tym przypadku nie przejdziemy dalej.
 16. Potwierdzamy utworzenie partycji i przechodzimy dalej
 17. Nie skanujemy dodatkowych mediow
 18. Mirror, Polska
 19. ftp.task.gda.pl, jest najblizej, szybko bedzie sie pobierac/mozna wybrac inny, ktory jest blizej nas, w zaleznosci od miejsca
 20. Jezeli posiadamy proxy to wpisujemy, inaczej pomijamy
 21. Nie wybieramy srodowiska graficznego, zaznaczamy standardowe utils systemowe
+W utils systems znajduja sie:
+bash - interpreter powloki systemowej
+coreutils - zestaw narzedi linii polecen dla systemow Unix
+debianutils - zestaw narzedzi dla systemu Debian
+dffutils - zestaw narzedzi do porownywania plikow
+dpkg - system zarzadzania pakietami dla systemu Debian
+e2fsprogs - zestaw narzedzi do obslugi systemu plikow ext2, ext3, ext4
+findutils - zestaw narzedzi do wyszukiwania plikow
+grep - narzedzie do wyszukiwania tekstu w plikach
+gzip - narzedzie do kompresji plikow
+hostname - narzedzie do zarzadznia nazwa hosta systemu
+init - program inicujacy system operacyjny
+login - program logowania uzytkownika do systemu
+mount - program do montowanai systemu plikow
+ncurses-bin - biblioteki i narzedzia do tworzenia interfejsow uzytkownika w trybie tekstowym
+passwd - program do zmiany hasla uzytkownika
+procps - zestaw narzedzi do monitorowania systemu
+sed - narzedzie do przetwarzania tekstu w plijach
+tar - narzedzie do archiwizacji plikow i katalogow
+udev - system zarzadzania urzadzeniami w systemie Linux
+util-linux - zestaw narzedzi systemowych dla systemow Unix
+Srodowiska graficzne:
+GNOME - popularne, zintegrowane, duza ilosc funkcjonalnosci, przyjazny interfejs, duza ilosc dostepnych motywow i dodatkow.
+Jedno z najbardziej rozbudowanych srodowisk graficznych, wymaga duzej ilosci zasobow.
+KDE Plasma - ciezszy interfejs niz GNOME, ale posiada narzedzia, ktore pozwola na dostosowanie go pod siebie.
+Rowniez wymaga duzej ilosci zasobow.
+Xfce - lekki interfejs uzytkownika, nie wymaga duzej ilosci zasobow, dziala szybciej i wydajniej na starszych komputerach.
+LXDE - jeszcze lzszejszy interfejs od poprzedniego, minimalne zuzycie zasobow i prostota interfejsu.
+Cinnamon - srodowisko powstalo na bazie GNOME, nowoczesny i przyjazny interfejs uzytkownika, latwy do konfiguracji
+MATE - lekkie i funkcjonalne srodowisko graficzne, powstalo na bazie GNOME 2, podobny interfejs i sposob dzialania do GNOME2.
 22. Instalacja zakonczona, po instalacji usuwamy dysk z wirtualnego napedu i wlaczamy ponownie system
 23. Wlaczamy zainstalowanego debiana
 24. Logujemy sie na konto i mozna korzystac z systemu
 25. Wpisujemy tasksel i mozemy ponownie wybrac srodowisko graficzne
+Instalujac wiecej niz jedno srodowisko graficzn mozna sie pomiedzy nimi przelaczac podczas logowania wybieramy interesujace nas.
+
+
