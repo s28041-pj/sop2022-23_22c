@@ -1,0 +1,16 @@
+04.03.2023
+
+- Na zajeciach nauczylem sie calego procesu instalacji, oraz jakie sa dostene opcje w VirtualBox
+- Z ktorych opcji warto korzystac, ktore opcje sa zbedne
+- Na odpowiednim zarzadzaniu zasobami, tak aby jak najoptymalniej zainstalowac system
+
+18.03.2023
+
+- Poznalem podstawowe pisanie skryptow w Bash'u
+- Jak tworzyc pliki, tak aby byly wykonywalne, oraz aby byly odrozniane jako bliki bashowe.
+- Podstawowe zamiany tekstu
+
+01.04.2023
+
+- Poznalem jak uzywac petl w Bash'u
+- Jak robic warunki w Bash'u
