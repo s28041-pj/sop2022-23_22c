@@ -23,7 +23,7 @@ Obsluguje dynamiczna zmiane rozmiaru dysku, szyfrowanie i kompresje. Z dysku VHD
 w zbiorze dyskow na naszym komputerze i mozna z niego korzystac.
 VMDK -> format stworzony przez VMware, zoptymalizowany pod katem platformy VMware, ale moze byc uzywany rowniez z VB.
 Obsluguje dynamiczna zmiane rozmiaru dysku, szyfrowanie i kompresje.
-Wybierzemy VDI, jest najoptymalniejszy z VB i oferuje najlepsza wydajnosc.
+Wybierzemy VDI, jest optymalny z VB i oferuje najlepsza wydajnosc.
 5. Mozemy wybrac dynamiczny przydzial badz staly rozmiar. Dzieki stalemu rozmiarowi dysku, od razu zabookujemy miejsce dla naszej wirtualnej maszyny,
 przez co nie zdziwimy sie, ze nagle znika nam ilosc dostepnej przestrzeni na dysku. Wybierajac dynamiczny przydzial, rozmiar naszej maszyny bedzie rosl,
 w miare zapotrzebowania na miejsce, oczywiscie nie przekroczy ona ilosci, ktora na starcie przydzielimy wirtualnej maszynie, rowniez jest to wolniejsze,
@@ -99,8 +99,11 @@ Configure iSCSI volumes, mechanizm podlaczania urzadzen blokowych poprzez siec. 
 Dysk wirtualny -> sa dwa typy partycji. MBR oraz GPT. GPT uzywane w momencie, w ktorym maszyna jest startowana z EFI, jezeli
 jest wylaczone to MBR.
 Klikamy na wolne miejsce i wybieramy wielkosc partycji oraz ustawiamy, czy partycja ma byc na poczatku, czy na koncu.
-Domyslnie mozna stworzyc cztery domyslne partycje na dysku. Czwarta partycja jest partycja logiczna. Pierwsza to partycja bootojaca,
-pozwalajaca na uruchomienie systemu.
+Mozemy utworzyc kilka partycji np. partycje /root /swap oraz /home. Rowniez mozemy utworzyc partycje rozszerzona (extended partition),
+ktora umozliwi tworzenie wielu partycji logicznych w obrebie jednej w obrebie jednej partycji logicznej. Partycje logiczne umozliwiaja
+utworzenie wiecej niz czterech partycji na dysku, ktore beda wykorzystywane do trzymania jakichs danych.
+Pierwsza partycja niekoniecznie musi byc partycja, jednak moze zostac ona oznaczona jako bootowalna, co umozliwi uruchomienie
+systemu z dysku twardego.
 Przydzielajac wielkosc partycji musimy odjac 1,5 razy przydzielonego wczesniej RAM'u. Np. przydzielilismy 16GB (na windowsie GiB)
 przestrzeni, oraz 4GB RAM'u, to mnozymy RAM razy 1,5 i od 16GB odejmujemy 6GB. Wobec tego przydzielamy 10GB przestrzeni dla partycji.
 Oraz 6GB jako mapowanie pamieci (partycje wymiany).

@@ -1,6 +1,8 @@
 #!/bin/bash
 ls -l
 X=$(ls -l)
-#w trakcie przypisywania do zmiennej, calosc wykonania komendy ls -l, jest brana jako jeden tekst ciagly
-#i w takiej postacie wyswietlana po wywolaniu zmiennej
-echo $X
+#echo $X dzieli zawartosc zmiennej X na slowa separowane spacjami i wyswietla kazde slowo oddzielnie,
+#natomiast ls -l wyswietla kazdy plik lub katalog w jednej linii wraz z pelnymi informacjami na jego temat
+#potrzebe jest wywolanie zmiennej z parametrem -e, ktore pozwala na interpretacje specjalnych znakow
+#takich jak znaki nowej linii, znaki kontrolne oraz kolory
+echo -e "$X"

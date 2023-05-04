@@ -2,7 +2,7 @@
 
 - Na zajeciach nauczylem sie calego procesu instalacji, oraz jakie sa dostene opcje w VirtualBox
 - Z ktorych opcji warto korzystac, ktore opcje sa zbedne
-- Na odpowiednim zarzadzaniu zasobami, tak aby jak najoptymalniej zainstalowac system
+- Na odpowiednim zarzadzaniu zasobami, tak aby z optymalnymi zasobami zainstalowac system
 
 18.03.2023
 
