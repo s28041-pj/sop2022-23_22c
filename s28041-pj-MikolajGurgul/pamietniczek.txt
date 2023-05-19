@@ -14,3 +14,17 @@
 
 - Poznalem jak uzywac petl w Bash'u
 - Jak robic warunki w Bash'u
+
+22.04.2023
+
+- Poznalem wprowadzenie do programowania w jezyku C
+- Kompilowanie restrykcyjne zgodnie ze standardem ISO C90
+- Operacje na wskaznikach
+- Instrukcje warunkowe w jezyku C
+- Petle w jezyku C
+
+06.05.2023
+
+- Poznalem operacje na PID'ach
+- Jak nimi zarzadzac, tworzyc drzewka z procesow
+- Jak dziala funkcja fork()
