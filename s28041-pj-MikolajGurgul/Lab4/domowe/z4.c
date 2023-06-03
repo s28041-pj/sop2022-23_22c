@@ -4,6 +4,10 @@
 void fibonacciIterative(int n) {
     int i;
     int* fib = (int*)malloc((n + 1) * sizeof(int));
+        if (fib == NULL) {
+        printf("Blad alokacji pamieci");
+        return 1;
+        }
     fib[0] = 0;
     fib[1] = 1;
 

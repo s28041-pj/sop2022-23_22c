@@ -11,6 +11,10 @@ struct Node {
 void append(struct Node** headRef, int data) {
     struct Node* current;
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        if (newNode == NULL) {
+        printf("Blad alokacji pamieci");
+        return 1;
+        }
     newNode->data = data;
     newNode->prev = NULL;
     newNode->next = NULL;
